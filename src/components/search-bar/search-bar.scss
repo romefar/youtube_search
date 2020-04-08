@@ -1,0 +1,36 @@
+.container { 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.search-form__input-container { 
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    position: relative;
+}
+
+.search-form__input-field { 
+    width: 100%;
+    padding: 15px 40px 15px 15px;
+    font-size: 1.2rem;
+    outline: none;
+    border-radius: 12px;
+    border: 2px solid #D3D3D3;
+    transition: border 1.5s ease-out;
+
+    &:focus { 
+        border: 2px solid #696969;
+    }
+}
+
+.search-icon { 
+    position: absolute;
+    right: 5px;
+    top: 23px;
+    border: 0;
+    padding: 0;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
