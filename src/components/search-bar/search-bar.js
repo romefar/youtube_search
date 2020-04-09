@@ -18,7 +18,6 @@ class SearchBar extends Component {
                 query
             })
         } else { 
-            console.log("invalid")
             this.setState({
                 query: ""
             })
@@ -27,6 +26,11 @@ class SearchBar extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+    }
+
+
+    handleClick = () => {
+
     }
 
     render() { 
@@ -40,7 +44,8 @@ class SearchBar extends Component {
                                 value={this.state.query}
                                 placeholder="Search for videos..."
                                 onChange={this.handleChange} />
-                            <button className="search-icon" >
+                            <button className="search-icon"
+                                    onClick={this.handleClick} >
                                 <FontAwesomeIcon
                                     icon={faSearch}
                                     fixedWidth
