@@ -1,0 +1,19 @@
+@import '../../sass-utils/_variables.scss';
+
+.error-block { 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: $main-text-font-size;
+    font-family: $font-stack;
+    color: $main-text-color;
+
+    &__header {
+        font-weight: normal;
+        margin: 0;
+    }
+
+    &__text { 
+        margin: 0;
+    }
+}
