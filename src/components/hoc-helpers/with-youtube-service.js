@@ -1,7 +1,7 @@
 import React from 'react'
 import { YouTubeServiceConsumer } from '../youtube-service-context'
 
-const withYouTubeService = (Wrapped) => {
+const withYouTubeService = () =>(Wrapped) => {
     return (props) => (
         <YouTubeServiceConsumer>
             {
