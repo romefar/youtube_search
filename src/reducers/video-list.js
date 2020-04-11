@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     items: [],
-    isLoading: true, 
+    isLoading: false, 
     hasError : null
 } 
 
@@ -15,13 +15,12 @@ const videoListReducer = (state = initialState, action) => {
     switch(action.type) {
         case FETCH_VIDEOS_REQUEST: 
             return {
-                items: [],
-                isLoading: true,
-                hasError: null
+                ...state,
+                isLoading : true
             }
         case FETCH_VIDEOS_SUCCESS: 
             return { 
-                items: action.payload,
+                items: [...state.items, ...action.payload],
                 isLoading: false,
                 hasError: null
             }
