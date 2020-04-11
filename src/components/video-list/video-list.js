@@ -4,14 +4,10 @@ import VideoListItem from '../video-list-item'
 import './video-list.scss'
 
 const VideoList = (props) => {
-    // const { videos } = props;
-    // videos.map(item => <VideoListItem video={item}/>)
+    const { items } = props;
     return (
         <div className="video-list">
-            <VideoListItem />
-            <VideoListItem />
-            <VideoListItem />
-            <VideoListItem />
+            {items.map(item => <VideoListItem key={item.videoData.videoId} item={item} />)}
         </div>
     )
 }
