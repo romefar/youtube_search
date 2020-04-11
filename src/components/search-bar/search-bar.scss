@@ -1,7 +1,6 @@
-.container { 
-    max-width: 1200px;
-    margin: 0 auto;
-}
+@import '../../sass-utils/_variables.scss';
+
+@import '../../sass-utils/_container.scss';
 
 .search-form__input-container { 
     display: flex;
@@ -13,7 +12,9 @@
 .search-form__input-field { 
     width: 100%;
     padding: 15px 40px 15px 15px;
-    font-size: 1.2rem;
+    font-size: $form-font-size;
+    font-family: $font-stack;
+    color: $main-text-color;
     outline: none;
     border-radius: 12px;
     border: 2px solid #D3D3D3;

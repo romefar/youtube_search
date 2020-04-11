@@ -5,6 +5,7 @@ import apiKey from './api-config';
     _rootRouteAPI = "https://www.googleapis.com/youtube/v3"
     _searchRouteAPI = `${this._rootRouteAPI}/search?`
     _videoDataRouteAPI = `${this._rootRouteAPI}/videos?`
+    _channelDataRouteAPI = `${this._rootRouteAPI}/channels?`
 
     _nextPageToken = null
     _maxResultsPerPage = 2
@@ -22,15 +23,32 @@ import apiKey from './api-config';
 
         // set next page token 
         this._nextPageToken = data.nextPageToken ? data.nextPageToken : null
+
         let videoIds = this._getVideosIds(data.items)
         const videoStatistics = await this._fetchVideosStatisticsByIds(videoIds)
 
-        data.items.forEach((item, i) => item.statistics = videoStatistics.items[i].statistics)
+        let channelsIds = this.__getChannelsIds(data.items)
+        const channelData = this._fetchChannelsStatisticsByIds(channelsIds)
+
+        data.items.forEach((item, i) => {
+            item.statistics = videoStatistics.items[i].statistics
+            item.channelData = channelData.item[i]
+        })
         return data
+    }
+
+    _getChannelsIds = (channels) => { 
+        return channels.map(item => item.snippet.channelId).join(',')
     }
 
     _getVideosIds = (videos) => {
         return videos.map(item => item.id.videoId).join(',')
+    }
+
+    _fetchChannelsStatisticsByIds = async (ids) => { 
+        const url = this._getChannelsStatisticsURL(ids)
+        const data = await this._fetch(`${this._channelDataRouteAPI}${url}`)
+        return data
     }
 
     _fetchVideosStatisticsByIds = async (ids) => {
@@ -58,6 +76,16 @@ import apiKey from './api-config';
             part: "statistics",
             id: ids,
             fields: "items(id,statistics)",
+            key: apiKey
+        }
+        return this._transformObjectToURL(url)
+    }
+
+    _getChannelsStatisticsURL = (ids) => {
+        const url = {
+            part: "snippet,statistics",
+            id: ids,
+            fields: "items",
             key: apiKey
         }
         return this._transformObjectToURL(url)

@@ -1,0 +1,67 @@
+@import '../../sass-utils/_variables.scss';
+
+.card {
+    max-width: 360px;
+    font-size: $main-text-font-size;
+    color: $main-text-color;
+    font-family: $font-stack;
+    border-radius: $card-border-radius;
+    margin: 20px 0;
+    transition: all 1.1s ease-in-out;
+    box-shadow: 3px 3px 5px 5px $box-shadow-color;
+    
+    &__video-thumbnail { 
+        width: 100%;
+        border-radius: $card-image-border-radius;
+    }
+
+    &__channel-thumbnail-container {
+        width: 40px;
+        padding: 0 10px;
+     }
+
+    &__channel-thumbnail { 
+        width: 100%;
+        border-radius: $channel-image-border-radius;
+    }
+
+    &__video-info-container {
+        padding: 10px 0;
+        display: flex;
+    }
+
+    &__video-title { 
+        margin: 0;
+        word-break: break-word;
+        word-wrap: break-word;
+    }
+
+    &__description-container {
+        width: 80%;
+    }
+
+    &__channel-name {
+        font-size: $card-description-font-size;
+        color: $card-description-font-color;
+    }
+
+    &__video-stat { 
+        display: flex;
+        justify-content: flex-start;
+        font-size: $card-description-font-size;
+        color: $card-description-font-color;
+    }
+
+    &__video-views-count { 
+        padding: 0 15px 0 0;
+    }
+
+    &:hover { 
+        box-shadow: 6px 6px 8px $box-shadow-color-hovered;
+        transform: scale(1.1);
+    }
+
+    &__description { 
+        margin: 0;
+    }
+}
