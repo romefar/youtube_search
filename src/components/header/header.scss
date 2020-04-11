@@ -1,0 +1,25 @@
+@import '../../sass-utils/_variables';
+@import '../../sass-utils/container';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+
+.header {
+    background-color: $header-background-color;  
+    font-family: $font-stack;
+
+    &__logo { 
+        width: 50px;
+    }
+
+    &__title { 
+        font-family: 'Open Sans', $font-stack;
+        font-size: $header-font-size;
+        color: $header-default-color;
+        margin: 0 0 0 15px;
+        font-weight: bold;
+    }
+
+    &__logo-container {
+        display: flex;
+        align-items: center;
+    }
+}
