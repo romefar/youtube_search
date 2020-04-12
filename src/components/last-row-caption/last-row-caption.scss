@@ -1,0 +1,25 @@
+@import '../../sass-utils/_variables';
+
+.last-row { 
+    text-align: center;
+    font-size: $sub-header-font-size;
+    font-family: $font-stack;
+    display: flex;
+    justify-content: center;
+    margin: 35px 0;
+
+    width: 100%;
+
+    &__caption { 
+        margin: 0;
+    }
+    
+    &__caption-container { 
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo-container {
+        width: 50px;
+    }    
+}
