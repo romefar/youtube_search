@@ -2,7 +2,6 @@ import React from 'react'
 import './video-list-item.scss'
 
 const VideoListItem = (props) => { 
-    console.log(props)
 
     const { videoThumbnails: { medium : { url:videoThumbnailURL } }, videoTitle, videoViewsCount, publishedAt } = props.item.videoData
     const { channelThumbnails: { default : { url : channelThumbnailURL} }, channelTitle } = props.item.channelData
