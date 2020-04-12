@@ -30,6 +30,7 @@ import { viewCountFormatter, dateFormatter } from '../utils/'
 
         let channelsIds = this._getChannelsIds(data.items)
         const channelData = await this._fetchChannelsStatisticsByIds(channelsIds)
+
         data.items.forEach((item, i) => {
             item.statistics = videoStatistics.items[i].statistics;
             channelData.items.forEach(channelItem => {
@@ -38,6 +39,8 @@ import { viewCountFormatter, dateFormatter } from '../utils/'
                 }
             })
         })
+ 
+        if(this._nextPageToken === null) return []
         return this._transformYouTubeItemData(data)
     }
 
