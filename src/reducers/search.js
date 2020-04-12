@@ -1,5 +1,5 @@
 import {
-    SET_QUERY_STRING
+    QUERY_STRING_CHANGED
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
 const searchReducer = (state = initialState, action) => { 
 
     switch(action.type) { 
-        case SET_QUERY_STRING:
+        case QUERY_STRING_CHANGED:
             return { query: action.payload }
         default:
             return state;
