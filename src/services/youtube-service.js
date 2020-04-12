@@ -1,4 +1,5 @@
 import apiKey from './api-config';
+import { viewCountFormatter, dateFormatter } from '../utils/' 
 
  export default class YouTubeService {
 
@@ -8,7 +9,7 @@ import apiKey from './api-config';
     _channelDataRouteAPI = `${this._rootRouteAPI}/channels?`
 
     _nextPageToken = null
-    _maxResultsPerPage = 2
+    _maxResultsPerPage = 4
 
     _fetch = async (url) => {
         const res = await fetch(`${url}`)
@@ -27,15 +28,75 @@ import apiKey from './api-config';
         let videoIds = this._getVideosIds(data.items)
         const videoStatistics = await this._fetchVideosStatisticsByIds(videoIds)
 
-        let channelsIds = this.__getChannelsIds(data.items)
-        const channelData = this._fetchChannelsStatisticsByIds(channelsIds)
-
+        let channelsIds = this._getChannelsIds(data.items)
+        const channelData = await this._fetchChannelsStatisticsByIds(channelsIds)
         data.items.forEach((item, i) => {
-            item.statistics = videoStatistics.items[i].statistics
-            item.channelData = channelData.item[i]
+            item.statistics = videoStatistics.items[i].statistics;
+            channelData.items.forEach(channelItem => {
+                if(item.snippet.channelId === channelItem.id) { 
+                    item.channelData = channelItem
+                }
+            })
         })
-        return data
+        return this._transformYouTubeItemData(data)
     }
+
+    _transformYouTubeItemData = ({ items }) => { 
+        let resData = []
+        items.forEach(item => {
+            let { id:channelId } = item.channelData
+            let { country, description: channelDescription, title:channelTitle, thumbnails:channelThumbnails, publishedAt:createdAt } = item.channelData.snippet
+            let { subscriberCount, videoCount, viewCount:channelTotalViewsCount, hiddenSubscriberCount:isSubscribersCountHidden } = item.channelData.statistics
+            let { videoId } = item.id
+            let { description:videoDescription, publishedAt, thumbnails:videoThumbnails, title:videoTitle } = item.snippet
+            let { viewCount:videoViewsCount, commentCount, dislikeCount, favoriteCount, likeCount } = item.statistics
+
+            if(!isSubscribersCountHidden) { 
+                subscriberCount = viewCountFormatter(subscriberCount)
+                videoCount = viewCountFormatter(videoCount)
+                channelTotalViewsCount = viewCountFormatter(channelTotalViewsCount, true)
+            } else { 
+                subscriberCount = 0
+            }
+
+            publishedAt = dateFormatter(publishedAt)
+            videoViewsCount = viewCountFormatter(videoViewsCount)
+            commentCount = viewCountFormatter(commentCount, true)
+            dislikeCount = viewCountFormatter(dislikeCount)
+            favoriteCount = viewCountFormatter(favoriteCount, true)
+            likeCount =  viewCountFormatter(likeCount)
+            createdAt = dateFormatter(createdAt, "LL")
+
+            resData.push({
+                channelData : {
+                    channelId,
+                    channelTitle,
+                    channelDescription,
+                    channelThumbnails,
+                    createdAt,
+                    subscriberCount,
+                    videoCount,
+                    channelTotalViewsCount,
+                    isSubscribersCountHidden,
+                    country
+
+                },
+                videoData: {
+                    videoId,
+                    videoTitle,
+                    videoDescription,
+                    publishedAt,
+                    videoViewsCount,
+                    commentCount,
+                    dislikeCount,
+                    favoriteCount,
+                    likeCount,
+                    videoThumbnails,
+                }
+            })
+        })
+        return resData
+    } 
 
     _getChannelsIds = (channels) => { 
         return channels.map(item => item.snippet.channelId).join(',')

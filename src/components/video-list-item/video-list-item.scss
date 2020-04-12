@@ -1,12 +1,12 @@
 @import '../../sass-utils/_variables.scss';
 
 .card {
-    max-width: 360px;
+    flex-basis: 360px;
     font-size: $main-text-font-size;
     color: $main-text-color;
     font-family: $font-stack;
     border-radius: $card-border-radius;
-    margin: 20px 0;
+    margin: 20px 0 0;
     transition: all 1.1s ease-in-out;
     box-shadow: 3px 3px 5px 5px $box-shadow-color;
     

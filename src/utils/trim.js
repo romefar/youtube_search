@@ -1,9 +1,9 @@
-const trim = (string) => {
-    if (string.length <= 2) return string.trim();
+const trim = (str) => {
+    if (str.length <= 2) return str.trim();
 
     let res = [];
 
-    const arr = string.trim().split("");
+    const arr = str.trim().split("");
     let prev = arr.shift();
     if (prev !== " ") res.push(prev);
 
