@@ -1,19 +1,16 @@
 import {
-    THEME_LIGHT_MODE,
-    THEME_DARK_MODE
+    THEME_MODE_CHANGE
 } from '../actions/actionTypes'
 
 const initialState = {
-    theme: null
+    themeName: 'light'
 }
 
 const themeReducer = (state = initialState, action) => { 
 
     switch(action.type) { 
-        case THEME_LIGHT_MODE:
-            return { theme: 'LIGHT' }
-        case THEME_DARK_MODE: 
-            return { theme: 'DARK' }
+        case THEME_MODE_CHANGE:
+            return { ...state, themeName: action.payload }
         default:
             return state;
     }
