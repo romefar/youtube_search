@@ -1,0 +1,25 @@
+.scroller {
+    position: fixed;
+    width: 50px;
+    right: 50px;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1.2s ease-in-out;
+    background-color: rgba(217, 217, 217, 0.4);
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(128,128,128, 0.2);
+    cursor: pointer;
+
+    &__icon { 
+        width: 40px;
+        fill: rgba(192,192,192, 0.9)
+    }
+
+    &:hover { 
+        border: 1px solid rgba(128,128,128, 1);
+        background-color: rgba(217, 217, 217, 1);
+    }
+}
