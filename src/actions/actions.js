@@ -2,7 +2,8 @@ import {
     FETCH_VIDEOS_SUCCESS,
     FETCH_VIDEOS_REQUEST,
     FETCH_VIDEOS_FAILURE,
-    SET_QUERY_STRING
+    VIDEOS_LIST_CLEARED,
+    QUERY_STRING_CHANGED
 } from './actionTypes'
 
 const videosRequested = () => {
@@ -34,12 +35,19 @@ const fetchVideos = (youtubeService) => (keyword) => (dispatch) => {
 
 const searchStringSettled = (query) => { 
     return {
-        type : SET_QUERY_STRING,
+        type : QUERY_STRING_CHANGED,
         payload: query
+    }
+}
+
+const videosListRestored = () => { 
+    return { 
+        type: VIDEOS_LIST_CLEARED
     }
 }
 
 export { 
     fetchVideos,
-    searchStringSettled
+    searchStringSettled,
+    videosListRestored
 }

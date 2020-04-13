@@ -1,13 +1,15 @@
 import {
     FETCH_VIDEOS_SUCCESS,
     FETCH_VIDEOS_REQUEST,
-    FETCH_VIDEOS_FAILURE
+    FETCH_VIDEOS_FAILURE,
+    VIDEOS_LIST_CLEARED
 } from '../actions/actionTypes'
 
 const initialState = {
     items: [],
     isLoading: false, 
-    hasError : null
+    hasError: null,
+    isEnd: false
 } 
 
 const videoListReducer = (state = initialState, action) => {
@@ -16,19 +18,29 @@ const videoListReducer = (state = initialState, action) => {
         case FETCH_VIDEOS_REQUEST: 
             return {
                 ...state,
+                isEnd: false,
                 isLoading : true
+            }
+        case VIDEOS_LIST_CLEARED: 
+            return { 
+                items: [],
+                isLoading: false, 
+                hasError: null,
+                isEnd: false
             }
         case FETCH_VIDEOS_SUCCESS: 
             return { 
                 items: [...state.items, ...action.payload],
                 isLoading: false,
-                hasError: null
+                hasError: null,
+                isEnd: !action.payload.length
             }
         case FETCH_VIDEOS_FAILURE:
             return { 
                 items: [],
                 isLoading: false,
-                hasError: action.payload
+                hasError: action.payload,
+                isEnd: false
             }
         default: 
             return state;

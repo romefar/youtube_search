@@ -4,13 +4,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { searchStringSettled } from '../../actions/'
+import { searchStringSettled, videosListRestored } from '../../actions/'
 import validate from '../../utils/validate'
 
 import './search-bar.scss';
 
 class SearchBar extends Component {
 
+    // TEST SEARCH STRING (8 results) : Egzod - My Stranger (feat. RIELL) cool new 2020 str
     state = {
         query: ""
     }
@@ -27,9 +28,10 @@ class SearchBar extends Component {
     handleClick = () => {
         const { query } = this.state
         const [trimmedQuery, isValidated] = validate(query)
-        const { searchStringSettled } = this.props
+        const { searchStringSettled, videosListRestored, query:storeQuery } = this.props
 
-        if (isValidated) {
+        if (isValidated && storeQuery !== trimmedQuery) {
+            videosListRestored()
             searchStringSettled(trimmedQuery)
         }
     }
@@ -65,7 +67,10 @@ const mapStateToProps = ({ search: { query } }) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ searchStringSettled }, dispatch)
+    return bindActionCreators({ 
+        searchStringSettled, 
+        videosListRestored 
+    }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
