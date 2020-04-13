@@ -2,7 +2,6 @@ import numeral from 'numeral'
 
 const viewCountFormatter = (number, beautify = false) => {
     number = parseInt(number)
-
     if(beautify) return numeral(number).format('0,0').split(',').join(" ")
     if(number < 1000) return number
 
