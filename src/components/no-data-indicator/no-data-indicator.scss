@@ -1,0 +1,33 @@
+@import '../../sass-utils/_variables';
+
+.response-message { 
+    text-align: center;
+    font-size: $sub-header-font-size;
+    font-family: $font-stack;
+    display: flex;
+    justify-content: center;
+    margin: 35px 0;
+    width: 100%;
+    align-items: center;
+    &__caption { 
+        margin: 0;
+    }
+
+    &__caption-container { 
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        width: 50px;
+    }    
+}
+
+.dark .response-message { 
+    &__caption { 
+        color: $main-text-color-dark
+    }
+    &__logo { 
+        fill: #fff;
+    }
+}
