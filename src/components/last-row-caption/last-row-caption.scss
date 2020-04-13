@@ -7,19 +7,20 @@
     display: flex;
     justify-content: center;
     margin: 35px 0;
-
     width: 100%;
-
+    
+    align-items: center;
     &__caption { 
         margin: 0;
     }
     
-    &__caption-container { 
-        display: flex;
-        align-items: center;
-    }
-
-    &__logo-container {
+    &__logo {
         width: 50px;
     }    
+}
+
+.dark .last-row {
+    &__caption { 
+        color: $main-text-color-dark
+    }
 }

@@ -30,12 +30,12 @@ class InfiniteScroll extends Component {
     }
 
     render() {
-        const { isLoading, isEnd, lastRow, items, loader } = this.props;
+        const { isLoading, isEnd, lastRow, items, loader, noData } = this.props;
         return (
            <React.Fragment>
                 <VideoList items={items} />
                 {isLoading ? loader : null}
-                {isEnd ? lastRow : null}
+                {isEnd && !items.length ? noData : isEnd ? lastRow : null}
            </React.Fragment>
         )
     }

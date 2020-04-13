@@ -1,13 +1,21 @@
 @import '../../sass-utils/_variables';
 @import '../../sass-utils/_container';
+@import '../../sass-utils/_holders';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
 
 .header {
-    background-color: $header-background-color;  
+    background-color: $header-general-color;  
     font-family: $font-stack;
+    @extend %transition-styles-holder;
 
     &__logo { 
         width: 50px;
+        fill: black;
+    }
+
+    &__flex-container { 
+        display: flex;
+        justify-content: space-between;
     }
 
     &__title { 
@@ -21,5 +29,13 @@
     &__logo-container {
         display: flex;
         align-items: center;
+    }
+}
+
+.dark .header { 
+    background-color: $header-general-color-dark;
+    
+    &__title { 
+        color : #fff;
     }
 }
