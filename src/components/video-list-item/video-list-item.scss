@@ -7,7 +7,7 @@
     font-family: $font-stack;
     border-radius: $card-border-radius;
     margin: 20px 0 0;
-    transition: all 1.1s ease-in-out;
+    transition: all 1s ease-in-out;
     box-shadow: 3px 3px 5px 5px $box-shadow-color;
     
     &__video-thumbnail { 
@@ -34,6 +34,9 @@
         margin: 0;
         word-break: break-word;
         word-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 50px;
     }
 
     &__description-container {
@@ -43,6 +46,7 @@
     &__channel-name {
         font-size: $card-description-font-size;
         color: $card-description-font-color;
+        margin: 3px 0;
     }
 
     &__video-stat { 
@@ -53,15 +57,32 @@
     }
 
     &__video-views-count { 
-        padding: 0 15px 0 0;
+        &::after { 
+            content: "•";
+            margin: 0 8px;
+        }
     }
 
     &:hover { 
         box-shadow: 6px 6px 8px $box-shadow-color-hovered;
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     &__description { 
         margin: 0;
+    }
+}
+
+.dark .card {
+    background-color: $card-background-color-dark;
+    box-shadow: 1px 1px 1px 2px $box-shadow-color-dark;
+    &__video-title { 
+        color: $card-title-color-dark;
+    }
+    &__video-stat { 
+        color: $main-text-color-dark;
+    }
+    &__channel-name { 
+        color: $main-text-color-dark;
     }
 }
