@@ -2,7 +2,7 @@
 // font size 
 $form-font-size: 1.2rem;
 $header-font-size: 1.4rem;
-$main-text-font-size: 1.2rem;
+$main-text-font-size: 1.1rem;
 $sub-header-font-size: 1.3rem;
 
 // font stack
@@ -10,8 +10,22 @@ $font-stack: Arial, Verdana, Geneva, Tahoma, sans-serif;
 
 // font color 
 $main-text-color: black;
-$header-default-color: white;
+$header-default-color: black;
 $header-background-color: black;
+
+$main-text-color-title: #fff;
+$main-text-color-dark: #aaa;
+$card-title-color-dark: #fff;  
+$card-background-color-dark: #181818;
+
+// background color 
+$header-general-color: #f9f9f9;
+$header-general-color-dark: rgba(33, 33, 33, 0.98);
+
+$main-background-color: #e9e9e9;
+$main-background-color-dark: #181818;
+
+$input-background-color-dark: #121212;
 
 // card
 $card-border-radius: 15px;
@@ -19,6 +33,7 @@ $card-image-border-radius: 15px 15px 0 0;
 $channel-image-border-radius: 50%;
 
 $box-shadow-color:rgba(171,169,169,0.85); 
+$box-shadow-color-dark:rgba(220,220,220,0.85); 
 $box-shadow-color-hovered:#696969; 
 
 $card-description-font-size: 1.1rem;
