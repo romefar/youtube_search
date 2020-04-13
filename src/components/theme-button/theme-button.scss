@@ -1,0 +1,15 @@
+.theme-button { 
+    display: flex;
+    align-self: center;
+    
+    &__icon { 
+        width: 30px;
+        margin: 0 8px 0 0;
+    }
+}
+
+.dark .theme-button { 
+    &__icon { 
+        fill: #fff;
+    }
+}
