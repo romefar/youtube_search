@@ -4,9 +4,9 @@
     flex-basis: 360px;
     font-size: $main-text-font-size;
     color: $main-text-color;
-    font-family: $font-stack;
+    font-family: $font-card-text-stack;
     border-radius: $card-border-radius;
-    margin: 20px 0 0;
+    margin: 20px 5px;
     transition: all 1s ease-in-out;
     box-shadow: 3px 3px 5px 5px $box-shadow-color;
     
@@ -34,9 +34,19 @@
         margin: 0;
         word-break: break-word;
         word-wrap: break-word;
+        cursor: pointer;
         overflow: hidden;
-        text-overflow: ellipsis;
+        text-overflow: clip;
         max-height: 50px;
+        font-family: $font-card-title-stack;
+        line-height: 1.5rem;
+        font-weight: 400;
+        font-size: $card-title-font-size;
+    }
+
+    &__video-link { 
+        text-decoration: none;
+        color: $main-text-color;
     }
 
     &__description-container {
@@ -47,6 +57,12 @@
         font-size: $card-description-font-size;
         color: $card-description-font-color;
         margin: 3px 0;
+        text-overflow: clip;
+    }
+
+    &__channel-link { 
+        text-decoration: none;
+        color: $card-description-font-color;
     }
 
     &__video-stat { 
@@ -54,6 +70,7 @@
         justify-content: flex-start;
         font-size: $card-description-font-size;
         color: $card-description-font-color;
+        line-height: 1.1rem;
     }
 
     &__video-views-count { 
@@ -83,6 +100,13 @@
         color: $main-text-color-dark;
     }
     &__channel-name { 
+        color: $main-text-color-dark;
+    }
+
+    &__video-link { 
+        color: $main-text-color-dark;
+    }
+    &__channel-link { 
         color: $main-text-color-dark;
     }
 }
