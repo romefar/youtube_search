@@ -7,6 +7,8 @@ $sub-header-font-size: 1.3rem;
 
 // font stack
 $font-stack: Arial, Verdana, Geneva, Tahoma, sans-serif;
+$font-card-title-stack: 'Roboto Medium', $font-stack;
+$font-card-text-stack: 'Roboto', $font-stack;
 
 // font color 
 $main-text-color: black;
@@ -36,5 +38,6 @@ $box-shadow-color:rgba(171,169,169,0.85);
 $box-shadow-color-dark:rgba(220,220,220,0.85); 
 $box-shadow-color-hovered:#696969; 
 
-$card-description-font-size: 1.1rem;
+$card-title-font-size: 1.1rem;
+$card-description-font-size: 1rem;
 $card-description-font-color: #696969;
