@@ -1,4 +1,3 @@
-import apiKey from './api-config';
 import { viewCountFormatter, dateFormatter, ResizeController, titleFormatter } from '../utils/' 
 
  export default class YouTubeService {
@@ -9,6 +8,7 @@ import { viewCountFormatter, dateFormatter, ResizeController, titleFormatter } f
     _channelDataRouteAPI = `${this._rootRouteAPI}/channels?`
     _openChannelURL = "https://www.youtube.com/channel/"
     _openVideoURl = "https://www.youtube.com/watch?v="
+    _apiKey = process.env.REACT_APP_YOUTUBE_DATA_API
 
     _nextPageToken = null
     _maxResultsPerPage = 0
@@ -138,7 +138,7 @@ import { viewCountFormatter, dateFormatter, ResizeController, titleFormatter } f
             type: "video",
             order: "relevance",
             fields: "nextPageToken,pageInfo,items(id,snippet)",
-            key: apiKey
+            key: this._apiKey
         }
         if (this._nextPageToken !== null) url.pageToken = this._nextPageToken;
         return this._transformObjectToURL(url)
@@ -149,7 +149,7 @@ import { viewCountFormatter, dateFormatter, ResizeController, titleFormatter } f
             part: "statistics",
             id: ids,
             fields: "items(id,statistics)",
-            key: apiKey
+            key: this._apiKey
         }
         return this._transformObjectToURL(url)
     }
@@ -159,7 +159,7 @@ import { viewCountFormatter, dateFormatter, ResizeController, titleFormatter } f
             part: "snippet,statistics",
             id: ids,
             fields: "items",
-            key: apiKey
+            key: this._apiKey
         }
         return this._transformObjectToURL(url)
     }

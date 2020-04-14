@@ -13,7 +13,7 @@ import '../../sass-utils/_fonts.css'
 import './app.scss'
 
 const youTubeService = new YouTubeService()
-
+console.log(process.env.REACT_APP_YOUTUBE_DATA_API)
 const App = () => {
     return (
         <Provider store={store}>
