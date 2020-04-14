@@ -44,6 +44,7 @@ class ThemeButton extends Component {
                     checkedIcon={false}
                     height={15}
                     width={40}
+                    className="theme-button__switch"
                      />
             </div>
         )

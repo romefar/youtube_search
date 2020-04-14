@@ -16,6 +16,8 @@
     &__flex-container { 
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        max-height: 50px;
     }
 
     &__title { 

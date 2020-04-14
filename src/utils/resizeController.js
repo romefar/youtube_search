@@ -30,7 +30,7 @@ class ResizeController  {
         }
 
         initialRowsCount = elememtsInRow * rowsCount
-        console.log(`Initial rows count: ${initialRowsCount}, elements in row ${elememtsInRow}`)
+        alert(`Initial rows count: ${initialRowsCount}, elements in row ${elememtsInRow}`)
        return initialLoad ? elememtsInRow : initialRowsCount
     }
 }
