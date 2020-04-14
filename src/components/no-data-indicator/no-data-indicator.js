@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from '../../icons'
+
 import './no-data-indicator.scss'
 
 const NoDataIndicator = () => {

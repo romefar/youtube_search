@@ -1,0 +1,73 @@
+@import './container';
+
+@media (max-width: 1210px) { 
+    .container {
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 930px) { 
+    .container {
+        max-width: 700px;
+    }
+    .video-list .card {
+        margin: 10px 5px;
+    }
+
+    .scroller { 
+        right: 40px;
+        bottom: 40px;
+    }
+
+}
+
+@media (max-width: 730px) { 
+    .container {
+        max-width: 500px;
+    }
+
+    .header__logo-container .header {
+        &__title { 
+            margin: 0 0 0 10px;
+        }
+    }
+}
+
+@media (max-width: 530px) { 
+    .container {
+        max-width: 400px;
+    }
+
+    .scroller { 
+        right: 30px;
+        bottom: 30px;
+    }
+
+    html { 
+        font-size: 14px;
+    }
+
+    .video-list .card .card__video-title {
+        line-height: 1.6rem;
+     }
+
+     .video-list .card__description-container { 
+        padding: 0 5px 0 0;
+     }
+
+     .video-list .card__video-title { 
+         height: 40px;
+     }
+
+}
+
+@media (max-width: 430px) { 
+    .container {
+        max-width: 300px;
+    }
+
+
+    .video-list .card {
+       flex-basis: 300px;
+    }
+}

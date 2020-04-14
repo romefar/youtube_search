@@ -1,14 +1,16 @@
-import React from 'react';
+import React from 'react'
+import { Provider } from 'react-redux'
+import store from '../../store'
 
-import './app.scss';
-import SearchBar from '../search-bar';
+import SearchBar from '../search-bar'
 import Header from '../header'
-import VideoContainer from '../video-container';
+import VideoContainer from '../video-container'
 import { YouTubeServiceProvider } from '../youtube-service-context'
 import YouTubeService from '../../services/youtube-service'
-import { Provider } from 'react-redux';
-import store from '../../store'
 import Scroller from '../scroller'
+
+import '../../sass-utils/_fonts.css'
+import './app.scss'
 
 const youTubeService = new YouTubeService()
 

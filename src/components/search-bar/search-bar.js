@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { searchStringSettled, videosListRestored } from '../../actions/'
 import validate from '../../utils/validate'

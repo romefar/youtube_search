@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
+import { bindActionCreators, compose } from 'redux'
+import { connect } from 'react-redux'
 
 import withYouTubeService from '../hoc-helpers'
 import { fetchVideos } from '../../actions'
 import Loader from '../loader'
-import { bindActionCreators, compose } from 'redux'
-import { connect } from 'react-redux'
 import InfiniteScroll from '../infinite-scroll'
 import LastRowCaption from '../last-row-caption'
-import './video-container.scss'
 import ErrorIndicator from '../error-indicator'
 import NoDataIndicator from '../no-data-indicator'
+
+import './video-container.scss'
 
 class VideoContainer extends Component { 
 

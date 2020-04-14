@@ -1,5 +1,5 @@
 import apiKey from './api-config';
-import { viewCountFormatter, dateFormatter, ResizeController } from '../utils/' 
+import { viewCountFormatter, dateFormatter, ResizeController, titleFormatter } from '../utils/' 
 
  export default class YouTubeService {
 
@@ -7,9 +7,12 @@ import { viewCountFormatter, dateFormatter, ResizeController } from '../utils/'
     _searchRouteAPI = `${this._rootRouteAPI}/search?`
     _videoDataRouteAPI = `${this._rootRouteAPI}/videos?`
     _channelDataRouteAPI = `${this._rootRouteAPI}/channels?`
+    _openChannelURL = "https://www.youtube.com/channel/"
+    _openVideoURl = "https://www.youtube.com/watch?v="
 
     _nextPageToken = null
     _maxResultsPerPage = 0
+    _prevRequestString = ""
 
     _fetch = async (url) => {
         const res = await fetch(`${url}`)
@@ -19,7 +22,8 @@ import { viewCountFormatter, dateFormatter, ResizeController } from '../utils/'
     }
 
     fetchVideos = async (keyword) => {
-        this._maxResultsPerPage = ResizeController.handleResize(this._nextPageToken)
+        this._maxResultsPerPage = ResizeController.handleResize(this._nextPageToken && this._prevRequestString === keyword)
+        this._prevRequestString = keyword
         const url = this._getVideosListByKeywordURL(keyword)
         const data = await this._fetch(`${this._searchRouteAPI}${url}`)
 
@@ -40,8 +44,6 @@ import { viewCountFormatter, dateFormatter, ResizeController } from '../utils/'
                 }
             })
         })
-        console.log(data)
- 
         if(this._nextPageToken === null || !data.items.length) return []
         return this._transformYouTubeItemData(data)
     }
@@ -71,6 +73,10 @@ import { viewCountFormatter, dateFormatter, ResizeController } from '../utils/'
             favoriteCount = viewCountFormatter(favoriteCount, true)
             likeCount = likeCount ? viewCountFormatter(likeCount) : 0
             createdAt = dateFormatter(createdAt, "LL")
+            videoTitle = titleFormatter(videoTitle)
+
+            const channelURL = `${this._openChannelURL}${channelId}`
+            const videoURL = `${this._openVideoURl}${videoId}`
 
             resData.push({
                 channelData : {
@@ -83,8 +89,8 @@ import { viewCountFormatter, dateFormatter, ResizeController } from '../utils/'
                     videoCount,
                     channelTotalViewsCount,
                     isSubscribersCountHidden,
-                    country
-
+                    country,
+                    channelURL
                 },
                 videoData: {
                     videoId,
@@ -97,6 +103,7 @@ import { viewCountFormatter, dateFormatter, ResizeController } from '../utils/'
                     favoriteCount,
                     likeCount,
                     videoThumbnails,
+                    videoURL
                 }
             })
         })

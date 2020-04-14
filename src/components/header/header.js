@@ -1,6 +1,8 @@
 import React from 'react'
+
 import { YouTubeIcon } from '../../icons/'
 import ThemeButton from '../theme-button'
+
 import './header.scss'
 
 const Header = () => {

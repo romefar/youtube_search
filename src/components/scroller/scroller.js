@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+
 import { UpArrow } from '../../icons/'
 import { animateScroll as scroll } from 'react-scroll'
+
 import './scroller.scss'
 
 class Scroller extends Component {

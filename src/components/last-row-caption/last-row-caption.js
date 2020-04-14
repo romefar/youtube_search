@@ -1,5 +1,6 @@
 import React from 'react'
 import { Finish } from '../../icons'
+
 import './last-row-caption.scss'
 
 const LastRowCaption = () => {

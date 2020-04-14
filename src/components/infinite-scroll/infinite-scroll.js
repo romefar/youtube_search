@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import debounce from "lodash.debounce"
+
 import VideoList from '../video-list'
 
 class InfiniteScroll extends Component { 
@@ -32,11 +33,11 @@ class InfiniteScroll extends Component {
     render() {
         const { isLoading, isEnd, lastRow, items, loader, noData } = this.props;
         return (
-           <React.Fragment>
+           <section className="video-container">
                 <VideoList items={items} />
                 {isLoading ? loader : null}
                 {isEnd && !items.length ? noData : isEnd ? lastRow : null}
-           </React.Fragment>
+           </section>
         )
     }
 }
