@@ -1,6 +1,7 @@
-import { fetchVideos, searchStringSettled, videosListRestored } from './actions'
+import { fetchVideos, searchStringSettled, videosListRestored, themeChange} from './actions'
 export {
     fetchVideos, 
     searchStringSettled,
-    videosListRestored
+    videosListRestored,
+    themeChange
 }

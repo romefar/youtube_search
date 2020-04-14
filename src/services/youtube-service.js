@@ -1,5 +1,5 @@
 import apiKey from './api-config';
-import { viewCountFormatter, dateFormatter } from '../utils/' 
+import { viewCountFormatter, dateFormatter, ResizeController } from '../utils/' 
 
  export default class YouTubeService {
 
@@ -9,7 +9,7 @@ import { viewCountFormatter, dateFormatter } from '../utils/'
     _channelDataRouteAPI = `${this._rootRouteAPI}/channels?`
 
     _nextPageToken = null
-    _maxResultsPerPage = 4
+    _maxResultsPerPage = 0
 
     _fetch = async (url) => {
         const res = await fetch(`${url}`)
@@ -19,6 +19,7 @@ import { viewCountFormatter, dateFormatter } from '../utils/'
     }
 
     fetchVideos = async (keyword) => {
+        this._maxResultsPerPage = ResizeController.handleResize(this._nextPageToken)
         const url = this._getVideosListByKeywordURL(keyword)
         const data = await this._fetch(`${this._searchRouteAPI}${url}`)
 
@@ -39,8 +40,9 @@ import { viewCountFormatter, dateFormatter } from '../utils/'
                 }
             })
         })
+        console.log(data)
  
-        if(this._nextPageToken === null) return []
+        if(this._nextPageToken === null || !data.items.length) return []
         return this._transformYouTubeItemData(data)
     }
 
@@ -65,9 +67,9 @@ import { viewCountFormatter, dateFormatter } from '../utils/'
             publishedAt = dateFormatter(publishedAt)
             videoViewsCount = viewCountFormatter(videoViewsCount)
             commentCount = viewCountFormatter(commentCount, true)
-            dislikeCount = viewCountFormatter(dislikeCount)
+            dislikeCount = dislikeCount ? viewCountFormatter(dislikeCount) : 0
             favoriteCount = viewCountFormatter(favoriteCount, true)
-            likeCount =  viewCountFormatter(likeCount)
+            likeCount = likeCount ? viewCountFormatter(likeCount) : 0
             createdAt = dateFormatter(createdAt, "LL")
 
             resData.push({

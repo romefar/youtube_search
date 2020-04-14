@@ -1,11 +1,15 @@
-h1 { 
-    transition: color 2s ease;
-    margin: 0;
-}
+@import '../../sass-utils/_variables';
+@import '../../sass-utils/_holders';
 
 body { 
     margin: 0;
     padding: 0;
+    background-color: $main-background-color ;
+    @extend %transition-styles-holder;
+}
+
+body.dark { 
+    background-color: $main-background-color-dark;
 }
 
 // .header { 

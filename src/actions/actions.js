@@ -3,7 +3,8 @@ import {
     FETCH_VIDEOS_REQUEST,
     FETCH_VIDEOS_FAILURE,
     VIDEOS_LIST_CLEARED,
-    QUERY_STRING_CHANGED
+    QUERY_STRING_CHANGED,
+    THEME_MODE_CHANGE
 } from './actionTypes'
 
 const videosRequested = () => {
@@ -46,8 +47,17 @@ const videosListRestored = () => {
     }
 }
 
+const themeChange = (theme) => {
+    return {
+        type: THEME_MODE_CHANGE,
+        payload: theme
+    }
+}
+
+
 export { 
     fetchVideos,
     searchStringSettled,
-    videosListRestored
+    videosListRestored,
+    themeChange
 }

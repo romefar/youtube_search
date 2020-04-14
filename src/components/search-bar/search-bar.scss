@@ -35,3 +35,12 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+.dark .search-icon { 
+    color: #fff;
+}
+
+.dark .search-form__input-field { 
+    background-color: $input-background-color-dark;
+    color: $main-text-color-dark;
+}
