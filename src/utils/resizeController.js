@@ -30,7 +30,6 @@ class ResizeController  {
         }
 
         initialRowsCount = elememtsInRow * rowsCount
-        alert(`Initial rows count: ${initialRowsCount}, elements in row ${elememtsInRow}`)
        return initialLoad ? elememtsInRow : initialRowsCount
     }
 }
