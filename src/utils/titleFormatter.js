@@ -2,14 +2,32 @@
 const numericCodes = {
     "&#32;" : " ",
     "&#33;" : "!",
-    "&#34;" : '/"',
+    "&#34;" : '"',
+    "&quot;": '"',
     "&#35;" : "#",
     "&#36;" : "$",
     "&#37;" : "%",
     "&#38;" : "&",
     "&amp;" : "&",
     "&apos;" : "'", 
-    "&#39;" : "'"
+    "&#39;" : "'",
+    "&#40;" : "(",
+    "&#41;" : ")",
+    "&#42;" : "*",
+    "&#43;" : "+",
+    "&#44;" : ",",
+    "&#45;" : "-",
+    "&#46;" : ".",
+    "&#47;" : "/",
+    "&#58;" : ":",
+    "&#59;" : ";",
+    "&#61;" : "=",
+    "&#63;" : "?",
+    "&#64;" : "@",
+    "&#92;" : "\\",
+    "&#94;" : "^",
+    "&#95;" : "_",
+    "&#124;" : "|"
 }
 
 const titleFormatter = (title) => {
@@ -20,7 +38,7 @@ const titleFormatter = (title) => {
     let escapedTitle = title
     
     codes.forEach(item => { 
-        escapedTitle = escapedTitle.replace(item, numericCodes[item])
+        escapedTitle = escapedTitle.replace(item, numericCodes[item] || "")
     })
    return escapedTitle
 }
