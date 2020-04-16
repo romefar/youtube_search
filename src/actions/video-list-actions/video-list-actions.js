@@ -1,11 +1,11 @@
+import getYouTubeService from '../../services/youtube-service'
 import {
     FETCH_VIDEOS_SUCCESS,
     FETCH_VIDEOS_REQUEST,
     FETCH_VIDEOS_FAILURE,
     VIDEOS_LIST_CLEARED,
-    QUERY_STRING_CHANGED,
-    THEME_MODE_CHANGE
-} from './actionTypes'
+} from './video-list-action-types'
+
 
 const videosRequested = () => {
     return {
@@ -27,19 +27,12 @@ const videosLoadingFailed = (error) => {
     }
 }
 
-const fetchVideos = (youtubeService) => (keyword) => (dispatch) => { 
+const fetchVideos = (keyword) => (dispatch) => { 
     dispatch(videosRequested())
-    youtubeService.fetchVideos(keyword)
+    getYouTubeService().fetchVideos(keyword)
         .then(data => dispatch(videosLoaded(data)))
         .catch(err => dispatch(videosLoadingFailed(err)))
 } 
-
-const searchStringSettled = (query) => { 
-    return {
-        type : QUERY_STRING_CHANGED,
-        payload: query
-    }
-}
 
 const videosListRestored = () => { 
     return { 
@@ -47,17 +40,7 @@ const videosListRestored = () => {
     }
 }
 
-const themeChange = (theme) => {
-    return {
-        type: THEME_MODE_CHANGE,
-        payload: theme
-    }
-}
-
-
 export { 
     fetchVideos,
-    searchStringSettled,
-    videosListRestored,
-    themeChange
+    videosListRestored
 }

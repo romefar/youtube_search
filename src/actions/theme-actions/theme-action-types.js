@@ -1,0 +1,1 @@
+export const THEME_MODE_CHANGE = "THEME_MODE_CHANGE"
