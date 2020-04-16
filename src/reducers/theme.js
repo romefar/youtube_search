@@ -1,6 +1,6 @@
 import {
     THEME_MODE_CHANGE
-} from '../actions/actionTypes'
+} from '../actions/theme-actions/theme-action-types'
 
 const initialState = {
     themeName: 'light'

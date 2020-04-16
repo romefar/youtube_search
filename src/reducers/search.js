@@ -1,6 +1,6 @@
 import {
     QUERY_STRING_CHANGED
-} from '../actions/actionTypes'
+} from '../actions/search-actions/search-action-types'
 
 const initialState = {
     query: ""
