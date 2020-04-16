@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '../../icons'
+import { Box } from '../../assets/icons'
 
 import './no-data-indicator.scss'
 
