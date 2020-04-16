@@ -1,5 +1,4 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import VideoListItem from '../video-list-item'
 
@@ -9,7 +8,7 @@ const VideoList = (props) => {
     const { items } = props;
     return (
         <div className="video-list">
-            {items.map(item => <VideoListItem key={uuidv4()} item={item} />)}
+            {items.map(item => <VideoListItem key={item.key} item={item} />)}
         </div>
     )
 }
