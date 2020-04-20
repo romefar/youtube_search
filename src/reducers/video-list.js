@@ -3,7 +3,7 @@ import {
     FETCH_VIDEOS_REQUEST,
     FETCH_VIDEOS_FAILURE,
     VIDEOS_LIST_CLEARED
-} from '../actions/actionTypes'
+} from '../actions/video-list-actions/video-list-action-types'
 
 const initialState = {
     items: [],

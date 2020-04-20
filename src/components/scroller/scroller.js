@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-import { UpArrow } from '../../icons/'
+import { UpArrow } from '../../assets/icons/'
 import { animateScroll as scroll } from 'react-scroll'
 
 import './scroller.scss'
 
-class Scroller extends Component {
+class Scroller extends PureComponent {
 
     state = {
         isVisible : false

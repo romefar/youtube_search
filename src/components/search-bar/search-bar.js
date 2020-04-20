@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -10,9 +10,8 @@ import validate from '../../utils/validate'
 
 import './search-bar.scss';
 
-class SearchBar extends Component {
+class SearchBar extends PureComponent {
 
-    // TEST SEARCH STRING (8 results) : Egzod - My Stranger (feat. RIELL) cool new 2020 str
     state = {
         query: ""
     }

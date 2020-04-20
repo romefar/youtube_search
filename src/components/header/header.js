@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { YouTubeIcon } from '../../icons/'
-import ThemeButton from '../theme-button'
+import { YouTubeIcon } from '../../assets/icons'
+import { ThemeContainer } from '../../containers'
 
 import './header.scss'
 
@@ -14,7 +14,7 @@ const Header = () => {
                         <YouTubeIcon className="header__logo" />
                         <span className="header__title">YouTube</span>
                     </div>
-                    <ThemeButton />
+                    <ThemeContainer />
                 </div>
             </div>
         </header>

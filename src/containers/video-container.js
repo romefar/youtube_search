@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import { bindActionCreators, compose } from 'redux'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import withYouTubeService from '../hoc-helpers'
-import { fetchVideos } from '../../actions'
-import Loader from '../loader'
-import InfiniteScroll from '../infinite-scroll'
-import LastRowCaption from '../last-row-caption'
-import ErrorIndicator from '../error-indicator'
-import NoDataIndicator from '../no-data-indicator'
-
-import './video-container.scss'
+import { fetchVideos } from '../actions'
+import Loader from '../components/loader'
+import InfiniteScroll from '../components/infinite-scroll'
+import LastRowCaption from '../components/last-row-caption'
+import ErrorIndicator from '../components/error-indicator'
+import NoDataIndicator from '../components/no-data-indicator'
 
 class VideoContainer extends Component { 
 
@@ -48,13 +45,10 @@ const mapStateToProps = ({ videoList : { items, isLoading, isEnd, hasError},
     }
 }
 
-const mapDispatchToProps = (dispatch, { youtubeService }) => {
+const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        fetchVideos : fetchVideos(youtubeService)
+        fetchVideos
     }, dispatch)
 }
 
-export default compose(
-    withYouTubeService(),
-    connect(mapStateToProps, mapDispatchToProps)
-)(VideoContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(VideoContainer)

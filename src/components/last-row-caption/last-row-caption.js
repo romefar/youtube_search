@@ -1,5 +1,5 @@
 import React from 'react'
-import { Finish } from '../../icons'
+import { Finish } from '../../assets/icons'
 
 import './last-row-caption.scss'
 
